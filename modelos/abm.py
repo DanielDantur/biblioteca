@@ -2,7 +2,7 @@ import sqlite3
 
 class ABM:
     __db = 'biblioteca.db'
-    __tabla = None
+    _tabla = None
     __conexion = None
     
     @classmethod    
@@ -31,3 +31,11 @@ class ABM:
                 print(f'Error en la consulta: {e}')
         else:
             print('No hay conexión con la db.')
+            
+    @classmethod    
+    def todos(cls):
+        sql = 'SELECT * FROM ' + cls._tabla
+        cls.conectar()
+        resultado = cls.correr_sql(sql)
+        cls.desconectar()
+        return resultado

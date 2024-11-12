@@ -1,3 +1,3 @@
-from libro import Libro
+from modelos.libro import Libro
 
 print(Libro.todos())
