@@ -1,12 +1,7 @@
-from vistas.ventana import VentanaPrincipal
-from vistas.librosVista import LibrosVista
-from controladores.librosControlador import LibroControlador
+from vistas.appVista import VentanaPrincipal
 
 def main():
-    ventana = VentanaPrincipal()
-    libros_vista = LibrosVista(ventana, LibroControlador())
-    libros_vista.pack()
-    ventana.mainloop()
+    VentanaPrincipal().mainloop()
 
 if __name__ == '__main__':
     print('Bienvenido al sistema de biblioteca')
