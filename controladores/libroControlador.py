@@ -5,8 +5,8 @@ class LibroControlador:
     def libros(self):
         return Libro.todos()
     
-    def buscar_libro(self, titulo):
-        return Libro.buscar(titulo)
+    def buscar_libro(self, busqueda):
+        return Libro.buscar(busqueda)
     
     def agregar_libro(self):
         return Libro.agregar()

@@ -11,9 +11,9 @@ class LibrosVista(Frame):
         labelLibros = ttk.Label(master=self, text='Libros')
         labelLibros.grid(row=0, column=0, sticky='w')
         
-        busqueda = StringVar()
+        self.busqueda = StringVar()
         ttk.Label(master=self, text='Búsqueda').grid(row=1, column=0, sticky='w')
-        self.busqueda = ttk.Entry(master=self, width=20, textvariable=busqueda)
+        self.busqueda = ttk.Entry(master=self, width=20, textvariable=self.busqueda)
         self.busqueda.grid(row=1, column=1, sticky='we')
         
         ttk.Button(master=self, text='Buscar', command=self.buscar).grid(row=1, column=2, sticky='we')
@@ -35,8 +35,9 @@ class LibrosVista(Frame):
     
     def llenar_lista(self, libros):
         self.lista_de_libros.delete(*self.lista_de_libros.get_children())
-        for libro in libros:
-            self.lista_de_libros.insert('',index='end', id=libro[0], values=libro[1:])
+        if libros != None:
+            for libro in libros:
+                self.lista_de_libros.insert('',index='end', id=libro[0], values=libro[1:])
                 
     def refrescar(self):
         libros = self.controlador.libros()

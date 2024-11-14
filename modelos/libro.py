@@ -43,8 +43,13 @@ class Libro(ABM):
     def eliminar_ejemplar(self):
         self.__stock -= 1
     
-    def buscar_libro(self, titulo):
-        pass
+    @classmethod
+    def buscar(cls, busqueda):
+        sql = 'SELECT * FROM libros WHERE titulo LIKE ? OR autor LIKE ? OR editorial LIKE ? OR categoria LIKE ?'
+        cls.conectar()
+        libros = cls.correr_sql(sql, (f'%{busqueda}%', f'%{busqueda}%', f'%{busqueda}%', f'%{busqueda}%'))
+        cls.desconectar()
+        return libros
         
     def modificar_libro(self):
         pass        
